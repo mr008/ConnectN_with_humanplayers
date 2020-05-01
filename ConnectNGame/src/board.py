@@ -11,8 +11,12 @@ class Board(object):
         for i in range(self.rows):
             self.my_list.append(copy.deepcopy(self.in_my_list))
 
-    def place_char(self, row: int, col: int, symbol: str) -> None:
+    def place_piece(self, row: int, col: int, symbol: str) -> None:
         self.my_list[row][col] = symbol
+    def check_full(self):
+        ...
+    def get_piece(self):
+        ...
 
     def __str__(self) -> None:
         to_print = self.name
