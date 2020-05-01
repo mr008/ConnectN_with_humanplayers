@@ -1,2 +1,6 @@
 class Board(object):
+    def print_board(self):
+        ...
+    def fill_in_spot(self):
     ...
+    def
