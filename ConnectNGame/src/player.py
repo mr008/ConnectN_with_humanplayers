@@ -5,4 +5,6 @@ class Player(object):
         self.p1_piece=
         self.p2_name=
         self.p2_piece=
+    def get_input(self,player:Instance):
+        ...
 
