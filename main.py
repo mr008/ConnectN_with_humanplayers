@@ -1,4 +1,4 @@
-
+#Ok! Wish us good luck
 def main() -> None:
     ...  # program execution begins here
 
