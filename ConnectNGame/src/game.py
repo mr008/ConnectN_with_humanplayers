@@ -34,12 +34,31 @@ class Game(object):
         player1 = Player(playname1,playpiece1)
         while True:
             playname2 = input('Player 2 enter your name: ')
+            if (playname2 != '' & playname2 != ' '& playname2.lower() != playname1.lower()):
+                break
+            elif(playname2 == '' | playname2 == ' '):
+                print('Your name cannot be the empty string or whitespace.')
+                continue
+            elif(playname2.lower() == playname1.lower()):
+                print('You cannot use {name} for your name as someone else is already using it.'.format(playname2))
+                continue
 
         while True:
             playpiece2 = input('Player 2 enter your piece')
-
-
-
+            if (playpiece2 != '' & playpiece2 != ' ' & playpiece2 != self.board.blank & len(playpiece2) == 1 & playpiece2 != playpiece1):
+                break
+            elif (playpiece2 == ''| playpiece2 == ' '):
+                print('Your piece cannot be the empty string or whitespace')
+                continue
+            elif (playpiece2 == self.board.blank):
+                print('Your piece cannot be the same as the blank character.')
+                continue
+            elif (len(playpiece2) != 1 ):
+                print('{} is not a single character. Your piece can only be a single character.'.format(playpiece2))
+                continue
+            elif (playpiece2 == playpiece1):
+                print('You cannot use {piece} for your piece as {player} is already using it.'.format(playpiece2,player1.name))
+        player2 = (playname2,playpiece2)
         self.players.append(player1)
         self.players.append(player2)
     def setup_board(self):
