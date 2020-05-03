@@ -66,7 +66,7 @@ class Game(object):
     def plears_turn(self):
         ...
 
-    def check_ver_win(self):
+    def check_har_win(self):
         consecutive_items = 0
         last_seen_item = None
         for lists in self.board.my_list
@@ -83,7 +83,7 @@ class Game(object):
             return False
     def check_obli_win(self):
 
-    def check_har_win(self):
+    def check_ver_win(self):
 
     def change_player(self):
 
