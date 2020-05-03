@@ -90,6 +90,8 @@ class Game(object):
 
     def declare_win(self):
         ...
+    def add_piece(self):
+
     def get_from_file(self,config_address):
         # config_address=str(sys.argv[1])
         #config_address = "E:\\coding programs\\ConnectN\\config_files\\3X3X3.txt"
@@ -107,3 +109,31 @@ class Game(object):
     def start_game(self):
         self.setup_players()
         print(self.board)
+        while True:
+            while True:
+                playcol1 = input('{},please enter the column you want to play in'.format(self.players[0].name) )
+                if (type(playcol1) != int):
+                    print('{} column needs to be an integer.{} is not an integer.'.format(self.players[0].name,playcol1))
+                    continue
+                else:
+                    for i in range(self.num_cols-1,-1,-1):
+                        if (self.board.my_list[i][playcol1] == self.blank_char):
+                            self.board.place_piece(i,playcol1,self.players[0].piece)
+                            print(self.board)
+                            break
+                break
+            while True:
+                playcol2 = input('{] please enter the column you want to play in'.format(self.players[1].name))
+                if (type(playcol2 != int)):
+                    print('{} column needs to be an integer.{} is not an integer.'.format(self.players[1].name,playcol2))
+                    continue
+                else:
+                    for i in range(self.num_cols-1,-1,-1):
+                        if (self.board.my_list[i][playcol2] == self.blank_char):
+                            self.board.place_piece(i,playcol2,self.players[1].piece)
+                            print(self.board)
+                            break
+                break
+            continue
+
+
