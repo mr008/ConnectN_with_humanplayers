@@ -57,7 +57,7 @@ class Game(object):
                 print('{} is not a single character. Your piece can only be a single character.'.format(playpiece2))
                 continue
             elif (playpiece2 == playpiece1):
-                print('You cannot use {piece} for your piece as {player} is already using it.'.format(playpiece2,player1.name))
+                print('You cannot use {} for your piece as {} is already using it.'.format(playpiece2,player1.name))
         player2 = (playname2,playpiece2)
         self.players.append(player1)
         self.players.append(player2)
