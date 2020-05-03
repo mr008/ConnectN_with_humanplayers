@@ -17,6 +17,7 @@ class Game(object):
             except ValueError:
                     print('Your name cannot be the empty string or whitespace.')
                     continue
+            break
         while True:
             try:
                 playpiece1 = input('Player 1 enter your piece: ')
@@ -111,9 +112,9 @@ class Game(object):
         print(self.board)
         while True:
             while True:
-                playcol1 = input('{},please enter the column you want to play in'.format(self.players[0].get_name) )
+                playcol1 = input('{}, please enter the column you want to play in'.format(self.players[0].get_name) )
                 if (type(playcol1) != int):
-                    print('{} column needs to be an integer.{} is not an integer.'.format(self.players[0].get_name,playcol1))
+                    print('{}, column needs to be an integer.{} is not an integer.'.format(self.players[0].get_name,playcol1))
                     continue
                 else:
                     for i in range(self.num_cols-1,-1,-1):
@@ -123,9 +124,9 @@ class Game(object):
                             break
                 break
             while True:
-                playcol2 = input('{] please enter the column you want to play in'.format(self.players[1].get_name))
+                playcol2 = input('{], please enter the column you want to play in'.format(self.players[1].get_name))
                 if (type(playcol2 != int)):
-                    print('{} column needs to be an integer.{} is not an integer.'.format(self.players[1].get_name,playcol2))
+                    print('{}, column needs to be an integer.{} is not an integer.'.format(self.players[1].get_name,playcol2))
                     continue
                 else:
                     for i in range(self.num_cols-1,-1,-1):
