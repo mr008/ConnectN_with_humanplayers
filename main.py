@@ -15,7 +15,7 @@ while True:
         print('{}, column needs to be an integer.{} is not an integer.'.format(game1.get_player(game1.get_current()).get_name(), playcol1))
         continue
     else:
-        for i in range(game1.get_num_cols() - 1, -1, -1):
+        for i in range(game1.get_num_rows() - 1, -1, -1):
             if (game1.get_board().get_my_list(i,playcol1) == game1.get_board().get_blank()):
                 game1.get_board().place_piece(i, playcol1, game1.get_player(game1.get_current()).get_piece())
                 print(game1.get_board())

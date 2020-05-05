@@ -20,6 +20,9 @@ class Game(object):
     def get_num_cols(self):
         return self.num_cols
 
+    def get_num_rows(self):
+        return self.num_rows
+    
     def get_board(self):
         return self.board
 
