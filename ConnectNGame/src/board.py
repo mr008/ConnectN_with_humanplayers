@@ -1,3 +1,4 @@
+import copy
 class Board(object):
     def __init__(self,ro: int, col: int, bla: str) -> None:
         self.rows = ro
@@ -9,6 +10,10 @@ class Board(object):
             self.in_my_list.append(self.blank)
         for i in range(self.rows):
             self.my_list.append(copy.deepcopy(self.in_my_list))
+        self.contents = [[self.blank for col in range(self.cols)] for row in range(self.rows)]
+
+    def __getitem__(self, item) -> list:
+        return self.contents
 
     def place_piece(self, row: int, col: int, symbol: str) -> None:
         self.my_list[row][col] = symbol
