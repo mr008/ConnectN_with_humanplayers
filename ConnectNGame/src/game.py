@@ -67,16 +67,15 @@ class Game(object):
     def plears_turn(self):
         ...
 
-    def check_har_win(self):
+    def check_har_win(self,player):
         for rows in range(self.board.my_list):
             counter = 0
             for cols in range(self.board.in_my_list):
                 if self.board[rows][cols] == self.board.blank:
                     counter = 0
-                if self.board[rows][cols] == piece:
-                    #FixMe piece is different accoridng to the player that called it.
+                if self.board[rows][cols] == player.get_piece():
                     counter += 1
-                    if counter=self.pieces_to_win:
+                    if counter == self.num_pieces_to_win:
                         return True
         else:
             return False
@@ -97,16 +96,15 @@ class Game(object):
             return False
 
 
-    def check_ver_win(self):
+    def check_ver_win(self,player):
         for cols in range(self.board.in_my_list):
             counter=0
             for rows in range(self.board.my_list):
                 if self.board[rows][cols] == self.board.blank:
                     counter=0
-                if self.board[rows][cols] == piece:
-                    #Fixme piece is different accoridng to the player that called it.
+                if self.board[rows][cols] == player.get_piece():
                     counter+=1
-                    if counter=self.pieces_to_win:
+                    if counter == self.num_pieces_to_win:
                         return True
         else:
             return False
@@ -134,6 +132,7 @@ class Game(object):
     def start_game(self):
         self.setup_players()
         print(self.board)
+        #Can put in main if better
         while True:
             while True:
                 playcol1 = input('{}, please enter the column you want to play in'.format(self.players[0].get_name) )
@@ -146,6 +145,9 @@ class Game(object):
                             self.board.place_piece(i,playcol1,self.players[0].get_piece)
                             print(self.board)
                             break
+                if (self.check_har_win(self.players[0]) | self.check_ver_win(self.players[0]) | self.check_obli_win(self.players[0])):
+                    print('{} won the game!'.format(self.players[0].get_name))
+                    return
                 break
             while True:
                 playcol2 = input('{], please enter the column you want to play in'.format(self.players[1].get_name))
@@ -158,6 +160,9 @@ class Game(object):
                             self.board.place_piece(i,playcol2,self.players[1].get_piece)
                             print(self.board)
                             break
+                if (self.check_har_win(self.players[0]) | self.check_ver_win(self.players[0]) | self.check_obli_win(self.players[0])):
+                    print('{} won the game!'.format(self.players[0].get_name))
+                    return
                 break
             continue
 
