@@ -3,12 +3,28 @@ from ConnectNGame.src.player import Player
 class Game(object):
     def __init__(self,blank_char,num_rows,num_pieces_to_win,num_cols):
         self.players = []
-        self.cr_player = current_player
         self.blank_char = blank_char
         self.num_rows = num_rows
         self.num_pieces_to_win = num_pieces_to_win
         self.num_cols = num_cols
         self.board = Board(num_rows,num_cols,blank_char)
+        self.current = 0
+
+    def switch_player(self):
+        self.current += 1
+        if (self.current == 2)
+            self.current = 0
+    def get_player(self, num):
+        return self.players[num]
+
+    def get_num_cols(self):
+        return self.num_cols
+
+    def get_board(self):
+        return self.board
+
+    def get_current(self):
+        return self.current
 
     def setup_players(self):
         while True:
@@ -62,10 +78,6 @@ class Game(object):
         player2 = (playname2,playpiece2)
         self.players.append(player1)
         self.players.append(player2)
-    def setup_board(self):
-
-    def plears_turn(self):
-        ...
 
     def check_har_win(self,player):
         for rows in range(self.board.my_list):
@@ -97,9 +109,9 @@ class Game(object):
 
 
     def check_ver_win(self,player):
-        for cols in range(self.board.in_my_list):
+        for cols in range(self.board.my_list):
             counter=0
-            for rows in range(self.board.my_list):
+            for rows in range(self.board.my_list()):
                 if self.board[rows][cols] == self.board.blank:
                     counter=0
                 if self.board[rows][cols] == player.get_piece():
@@ -108,12 +120,7 @@ class Game(object):
                         return True
         else:
             return False
-    def change_player(self):
 
-
-    def declare_win(self):
-        ...
-    def add_piece(self):
 
     def get_from_file(self,config_address):
         # config_address=str(sys.argv[1])
@@ -132,38 +139,6 @@ class Game(object):
     def start_game(self):
         self.setup_players()
         print(self.board)
-        #Can put in main if better
-        while True:
-            while True:
-                playcol1 = input('{}, please enter the column you want to play in'.format(self.players[0].get_name) )
-                if (type(playcol1) != int):
-                    print('{}, column needs to be an integer.{} is not an integer.'.format(self.players[0].get_name,playcol1))
-                    continue
-                else:
-                    for i in range(self.num_cols-1,-1,-1):
-                        if (self.board.my_list[i][playcol1] == self.blank_char):
-                            self.board.place_piece(i,playcol1,self.players[0].get_piece)
-                            print(self.board)
-                            break
-                if (self.check_har_win(self.players[0]) | self.check_ver_win(self.players[0]) | self.check_obli_win(self.players[0])):
-                    print('{} won the game!'.format(self.players[0].get_name))
-                    return
-                break
-            while True:
-                playcol2 = input('{], please enter the column you want to play in'.format(self.players[1].get_name))
-                if (type(playcol2 != int)):
-                    print('{}, column needs to be an integer.{} is not an integer.'.format(self.players[1].get_name,playcol2))
-                    continue
-                else:
-                    for i in range(self.num_cols-1,-1,-1):
-                        if (self.board.my_list[i][playcol2] == self.blank_char):
-                            self.board.place_piece(i,playcol2,self.players[1].get_piece)
-                            print(self.board)
-                            break
-                if (self.check_har_win(self.players[0]) | self.check_ver_win(self.players[0]) | self.check_obli_win(self.players[0])):
-                    print('{} won the game!'.format(self.players[0].get_name))
-                    return
-                break
-            continue
+
 
 

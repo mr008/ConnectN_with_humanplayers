@@ -10,3 +10,4 @@ class Player(object):
 
     def get_piece(self):
         return self.piece
+
