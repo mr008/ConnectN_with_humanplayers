@@ -73,7 +73,7 @@ class Game(object):
                 if self.board[rows][cols] == self.board.blank:
                     counter = 0
                 if self.board[rows][cols] == piece:
-                    # piece is different accoridng to the player that called it.
+                    #FixMe piece is different accoridng to the player that called it.
                     counter += 1
                     if counter=self.pieces_to_win:
                         return True
@@ -103,7 +103,7 @@ class Game(object):
                 if self.board[rows][cols] == self.board.blank:
                     counter=0
                 if self.board[rows][cols] == piece:
-                    # piece is different accoridng to the player that called it.
+                    #Fixme piece is different accoridng to the player that called it.
                     counter+=1
                     if counter=self.pieces_to_win:
                         return True
