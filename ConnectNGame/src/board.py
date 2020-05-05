@@ -21,14 +21,17 @@ class Board(object):
         ...
     def get_piece(self):
         ...
-    def get_blank(self):
+    def get_blank(self) -> str:
         return self.blank
 
-    def get_my_list(self,r,c):
+    def get_my_list(self,r: int,c:int) -> str:
         return self.my_list[r][c]
 
-    def get_in_my_list(self,r,c):
-        return self.in_my_list[r][c]
+    def get_my_list(self) -> list:
+        return self.my_list
+
+    def get_in_my_list(self) -> list:
+        return self.in_my_list
 
     def __str__(self) -> None:
         for k in range(self.cols):

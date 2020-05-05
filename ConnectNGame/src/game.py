@@ -12,7 +12,7 @@ class Game(object):
 
     def switch_player(self):
         self.current += 1
-        if (self.current == 2)
+        if (self.current == 2):
             self.current = 0
     def get_player(self, num):
         return self.players[num]
@@ -63,16 +63,16 @@ class Game(object):
         while True:
             try:
                 playpiece2 = input('Player 2 enter your piece')
-                if (playpiece2 != '' & playpiece2 != ' ' & playpiece2 != self.board.blank & len(playpiece2) == 1 & playpiece2 != playpiece1):
+                if (playpiece2 != '' & playpiece2 != ' ' & playpiece2 != self.board.get_blank() & len(playpiece2) == 1 & playpiece2 != playpiece1):
                     break
                 elif (playpiece2 == ''| playpiece2 == ' '):
                     raise ValueError('Your piece cannot be the empty string or whitespace')
-                elif (playpiece2 == self.board.blank):
+                elif (playpiece2 == self.board.get_blank()):
                     raise ValueError('Your piece cannot be the same as the blank character.')
                 elif (len(playpiece2) != 1 ):
                     raise ValueError('{} is not a single character. Your piece can only be a single character.'.format(playpiece2))
                 elif (playpiece2 == playpiece1):
-                    raise ValueError('You cannot use {piece} for your piece as {player} is already using it.'.format(playpiece2,player1.name))
+                    raise ValueError('You cannot use {piece} for your piece as {player} is already using it.'.format(playpiece2,player1.get_name()))
             except ValueError as r:
                 print(r)
         player2 = (playname2,playpiece2)
