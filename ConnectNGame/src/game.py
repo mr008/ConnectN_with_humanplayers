@@ -68,6 +68,19 @@ class Game(object):
         ...
 
     def check_har_win(self):
+        for rows in range(self.board.my_list):
+            counter = 0
+            for cols in range(self.board.in_my_list):
+                if self.board[rows][cols] == self.board.blank:
+                    counter = 0
+                if self.board[rows][cols] == piece:
+                    #FixMe piece is different accoridng to the player that called it.
+                    counter += 1
+                    if counter=self.pieces_to_win:
+                        return True
+        else:
+            return False
+    def check_obli_win(self):
         consecutive_items = 0
         last_seen_item = None
         for lists in self.board.my_list
@@ -82,10 +95,21 @@ class Game(object):
                 if consecutive_items == 4:
                     return True
             return False
-    def check_obli_win(self):
+
 
     def check_ver_win(self):
-
+        for cols in range(self.board.in_my_list):
+            counter=0
+            for rows in range(self.board.my_list):
+                if self.board[rows][cols] == self.board.blank:
+                    counter=0
+                if self.board[rows][cols] == piece:
+                    #Fixme piece is different accoridng to the player that called it.
+                    counter+=1
+                    if counter=self.pieces_to_win:
+                        return True
+        else:
+            return False
     def change_player(self):
 
 
