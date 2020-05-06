@@ -94,9 +94,9 @@ class Game(object):
             return "Player2 win"
 
     def check_har_win(self,player):
-        for rows in range(self.board.get_my_list()):
+        for rows in range(len(self.board.get_my_list()):
             counter = 0
-            for cols in range(self.board.get_in_my_list()):
+            for cols in range(len(self.board.get_in_my_list()):
                 if self.board[rows][cols] == self.board.get_blank():
                     counter = 0
                 if self.board[rows][cols] == player.get_piece():
@@ -107,10 +107,10 @@ class Game(object):
             return False
 
     def check_left_obl(self,player):
-        for cols in range(self.board.get_my_list()):
+        for cols in range(len(self.board.get_my_list()):
             counter = 0
             step=0
-            for rows in range(self.board.get_my_list()):
+            for rows in range(len(self.board.get_my_list()):
                 step+=1
                 if self.board[rows][cols] == self.board.get_blank():
                     counter = 0
@@ -122,10 +122,10 @@ class Game(object):
         else:
             return False
     def check_right_obl(self,player):
-        for cols in range(self.board.get_my_list()):
+        for cols in range(len(self.board.get_my_list()):
             counter = 0
             step=0
-            for rows in range(self.board.get_my_list()):
+            for rows in range(len(self.board.get_my_list()):
                 step+=1
                 if self.board[rows][cols] == self.board.get_blank():
                     counter = 0
@@ -140,9 +140,9 @@ class Game(object):
 
 
     def check_ver_win(self,player):
-        for cols in range(self.board.get_my_list()):
+        for cols in range(len(self.board.get_my_list()):
             counter=0
-            for rows in range(self.board.get_my_list()):
+            for rows in range(len(self.board.get_my_list()):
                 if self.board[rows][cols] == self.board.get_blank():
                     counter=0
                 if self.board[rows][cols] == player.get_piece():
