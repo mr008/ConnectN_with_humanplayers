@@ -81,6 +81,13 @@ class Game(object):
         player2 = (playname2,playpiece2)
         self.players.append(player1)
         self.players.append(player2)
+    def winning_checking(self):
+        if self.check_har_win(self.player1) or self.check_left_obl(self.player1) \
+                or self.check_right_obl(self.player1) or self.check_ver_win(self.player1):
+            return "Player1 win"
+        elif self.check_har_win(self.player1) or self.check_left_obl(self.player1) \
+                or self.check_right_obl(self.player1) or self.check_ver_win(self.player1):
+            return "Player2 win"
 
     def check_har_win(self,player):
         for rows in range(self.board.my_list):
@@ -94,21 +101,38 @@ class Game(object):
                         return True
         else:
             return False
-    def check_obli_win(self):
-        consecutive_items = 0
-        last_seen_item = None
-        for lists in self.board.my_list
-            for item in lists:
-                if item == self.blank_char:
-                    consecutive_items = 0
-                elif item == last_seen_item:
-                    consecutive_items += 1
-                else:
-                    consecutive_items = 1
-                last_seen_item = item
-                if consecutive_items == 4:
-                    return True
+
+    def check_left_obl(self,player):
+        for cols in range(self.board.my_list):
+            counter = 0
+            step=0
+            for rows in range(self.board.my_list()):
+                step+=1
+                if self.board[rows][cols] == self.board.blank:
+                    counter = 0
+                    step=0
+                if self.board[rows][cols-step] == player.get_piece():
+                    counter += 1
+                    if counter == self.num_pieces_to_win:
+                        return True
+        else:
             return False
+    def check_right_obl(self,player):
+        for cols in range(self.board.my_list):
+            counter = 0
+            step=0
+            for rows in range(self.board.my_list()):
+                step+=1
+                if self.board[rows][cols] == self.board.blank:
+                    counter = 0
+                    step=0
+                if self.board[rows][cols+step] == player.get_piece():
+                    counter += 1
+                    if counter == self.num_pieces_to_win:
+                        return True
+        else:
+            return False
+
 
 
     def check_ver_win(self,player):
