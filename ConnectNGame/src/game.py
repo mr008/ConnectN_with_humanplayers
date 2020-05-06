@@ -1,4 +1,5 @@
 import sys
+from . import board
 from ConnectNGame.src.player import Player
 class Game(object):
     def __init__(self,blank_char,num_rows,num_pieces_to_win,num_cols):
@@ -7,7 +8,7 @@ class Game(object):
         self.num_rows = num_rows
         self.num_pieces_to_win = num_pieces_to_win
         self.num_cols = num_cols
-        self.board = Board(num_rows,num_cols,blank_char)
+        self.board = board.Board(num_rows,num_cols,blank_char)
         self.current = 0
 
     def switch_player(self):
