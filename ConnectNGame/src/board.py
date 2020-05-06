@@ -1,8 +1,8 @@
 import copy
 class Board(object):
     def __init__(self,ro: int, col: int, bla: str) -> None:
-        self.rows = ro
-        self.cols = col
+        self.rows = int(ro)
+        self.cols = int(col)
         self.blank = bla
         self.my_list = []
         self.in_my_list = []
