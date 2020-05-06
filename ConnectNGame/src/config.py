@@ -1,4 +1,6 @@
 from . import game
+
+
 class Config(object):
 
     def get_from_file(self, config_address):

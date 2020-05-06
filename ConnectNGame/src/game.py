@@ -76,7 +76,7 @@ class Game(object):
                 elif (len(playpiece2) != 1 ):
                     raise ValueError('{} is not a single character. Your piece can only be a single character.'.format(playpiece2))
                 elif (playpiece2 == playpiece1):
-                    raise ValueError('You cannot use {piece} for your piece as {player} is already using it.'.format(playpiece2,player1.get_name()))
+                    raise ValueError('You cannot use {} for your piece as {} is already using it.'.format(playpiece2,player1.get_name()))
             except ValueError as r:
                 print(r)
         player2 = (playname2,playpiece2)

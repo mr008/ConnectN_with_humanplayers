@@ -14,8 +14,5 @@ def main() -> None:
     game1.start_game()
 
 
-
-
-
 if __name__ == '__main__':
     main()
