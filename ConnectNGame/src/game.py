@@ -1,14 +1,14 @@
 import sys
-from . import board
 from ConnectNGame.src.player import Player
+from ConnectNGame.src.board import Board
 class Game(object):
     def __init__(self,blank_char,num_rows,num_pieces_to_win,num_cols):
         self.players = []
         self.blank_char = blank_char
-        self.num_rows = num_rows
-        self.num_pieces_to_win = num_pieces_to_win
-        self.num_cols = num_cols
-        self.board = board.Board(num_rows,num_cols,blank_char)
+        self.num_rows = int(num_rows)
+        self.num_pieces_to_win = int(num_pieces_to_win)
+        self.num_cols = int(num_cols)
+        self.board = Board(self.num_rows,self.num_cols,blank_char)
         self.current = 0
 
     def switch_player(self):
@@ -44,7 +44,7 @@ class Game(object):
                 if ((playpiece1 != '') & (playpiece1 != ' ') & (playpiece1 != self.board.get_blank()) & (len(playpiece1) == 1)):
                     break
                 elif ((playpiece1 == '')| (playpiece1 == ' ')):
-                    raise ValueError('Your piece cannot be the empty string or whitespace')
+                    raise ValueError('Your piece cannot be the empty string or whitespace.')
                 elif (playpiece1 == self.board.get_blank()):
                     raise ValueError('Your piece cannot be the same as the blank character.')
                 elif (len(playpiece1) != 1 ):
@@ -60,28 +60,31 @@ class Game(object):
                 elif((playname2 == '') | (playname2 == ' ')):
                     raise ValueError('Your name cannot be the empty string or whitespace.')
                 elif(playname2.lower() == playname1.lower()):
-                    raise ValueError('You cannot use {name} for your name as someone else is already using it.'.format(playname2))
+                    raise ValueError('You cannot use {} for your name as someone else is already using it.'.format(playname2))
             except ValueError as r:
                 print(r)
-
         while True:
             try:
-                playpiece2 = input('Player 2 enter your piece')
+                playpiece2 = input('Player 2 enter your piece: ')
                 if ((playpiece2 != '') & (playpiece2 != ' ') & (playpiece2 != self.board.get_blank()) & (len(playpiece2) == 1) & (playpiece2 != playpiece1)):
                     break
                 elif ((playpiece2 == '')| (playpiece2 == ' ')):
-                    raise ValueError('Your piece cannot be the empty string or whitespace')
+                    raise ValueError('Your piece cannot be the empty string or whitespace.')
+
                 elif (playpiece2 == self.board.get_blank()):
                     raise ValueError('Your piece cannot be the same as the blank character.')
+
                 elif (len(playpiece2) != 1 ):
                     raise ValueError('{} is not a single character. Your piece can only be a single character.'.format(playpiece2))
+
                 elif (playpiece2 == playpiece1):
                     raise ValueError('You cannot use {} for your piece as {} is already using it.'.format(playpiece2,player1.get_name()))
             except ValueError as r:
                 print(r)
-        player2 = (playname2,playpiece2)
+        player2 = Player(playname2,playpiece2)
         self.players.append(player1)
         self.players.append(player2)
+        return
     def winning_checking(self):
         if self.check_har_win(self.player1) or self.check_left_obl(self.player1) \
                 or self.check_right_obl(self.player1) or self.check_ver_win(self.player1):
@@ -163,14 +166,13 @@ class Game(object):
         self.setup_players()
         print(self.board)
         while True:
-            playcol1 = input('{}, please enter the column you want to play in'.format(self.get_player(self.get_current()).get_name()))
+            playcol1 = int(input('{}, please enter the column you want to play in: '.format(self.get_player(self.get_current()).get_name())))
             if (type(playcol1) != int):
-                print('{}, column needs to be an integer.{} is not an integer.'.format(
-                    self.get_player(self.get_current()).get_name(), playcol1))
+                print('{}, column needs to be an integer.{} is not an integer.'.format(self.get_player(self.get_current()).get_name(), playcol1))
                 continue
             else:
                 for i in range(self.get_num_rows() - 1, -1, -1):
-                    if (self.get_board().get_my_list(i, playcol1) == self.get_board().get_blank()):
+                    if (self.get_board().from_my_list(i, playcol1) == self.get_board().get_blank()):
                         self.get_board().place_piece(i, playcol1, self.get_player(self.get_current()).get_piece())
                         print(self.get_board())
                         break

@@ -23,7 +23,7 @@ class Board(object):
     def get_blank(self) -> str:
         return self.blank
 
-    def get_my_list(self,r: int,c:int) -> str:
+    def from_my_list(self,r: int,c:int) -> str:
         return self.my_list[r][c]
 
     def get_my_list(self) -> list:
@@ -33,6 +33,7 @@ class Board(object):
         return self.in_my_list
 
     def __str__(self) -> None:
+        to_print = ' '
         for k in range(self.cols):
             to_print += ' ' + str(k)
         to_print += '\n'
