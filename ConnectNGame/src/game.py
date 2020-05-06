@@ -94,63 +94,64 @@ class Game(object):
             return "Player2 win"
 
     def check_har_win(self,player):
-        for rows in range(len(self.board.get_my_list()):
+        for rows in range(self.board.cols):
             counter = 0
-            for cols in range(len(self.board.get_in_my_list()):
-                if self.board[rows][cols] == self.board.get_blank():
+            for cols in range(self.board.rows):
+                if self.board[(rows,cols)] == self.board.get_blank():
                     counter = 0
-                if self.board[rows][cols] == player.get_piece():
+                if self.board[(rows,cols)] == player.get_piece():
                     counter += 1
                     if counter == self.num_pieces_to_win:
                         return True
-        else:
-            return False
+
+        return False
 
     def check_left_obl(self,player):
-        for cols in range(len(self.board.get_my_list()):
+        for cols in range(self.board.cols):
             counter = 0
             step=0
-            for rows in range(len(self.board.get_my_list()):
+            for rows in range(self.board.rows):
                 step+=1
-                if self.board[rows][cols] == self.board.get_blank():
+                if self.board[(rows,cols)] == self.board.get_blank():
                     counter = 0
                     step=0
-                if self.board[rows][cols-step] == player.get_piece():
+                if self.board[(rows,cols-step)] == player.get_piece():
                     counter += 1
                     if counter == self.num_pieces_to_win:
                         return True
-        else:
-            return False
+
+        return False
     def check_right_obl(self,player):
-        for cols in range(len(self.board.get_my_list()):
+        for cols in range(self.board.cols):
             counter = 0
             step=0
-            for rows in range(len(self.board.get_my_list()):
-                step+=1
-                if self.board[rows][cols] == self.board.get_blank():
+            for rows in range(self.board.rows):
+                if self.board[(rows,cols)] == self.board.get_blank():
                     counter = 0
                     step=0
-                if self.board[rows][cols+step] == player.get_piece():
-                    counter += 1
-                    if counter == self.num_pieces_to_win:
-                        return True
-        else:
-            return False
+                if rows<self.board.rows and cols+step<self.board.cols:
+                    if self.board[(rows,cols+step)] == player.get_piece():
+                        counter += 1
+                        step += 1
+                        if counter == self.num_pieces_to_win:
+                            return True
+
+
+        return False
 
 
 
     def check_ver_win(self,player):
-        for cols in range(len(self.board.get_my_list()):
+        for cols in range(self.board.cols):
             counter=0
-            for rows in range(len(self.board.get_my_list()):
-                if self.board[rows][cols] == self.board.get_blank():
+            for rows in range(self.board.rows):
+                if self.board[(rows,cols)] == self.board.get_blank():
                     counter=0
-                if self.board[rows][cols] == player.get_piece():
+                if self.board[(rows,cols)] == player.get_piece():
                     counter+=1
                     if counter == self.num_pieces_to_win:
                         return True
-        else:
-            return False
+        return False
 
     def check_all_win(self,player):
         win1 = self.check_ver_win(player)
@@ -176,7 +177,7 @@ class Game(object):
                         self.get_board().place_piece(i, playcol1, self.get_player(self.get_current()).get_piece())
                         print(self.get_board())
                         break
-            if (self.check_all_win(self.get_player(self.get_current()))) :
+            if self.check_all_win(self.get_player(self.get_current())) :
                 print('{} won the game!'.format(self.get_player(self.get_current()).get_name()))
                 break
             self.switch_player()

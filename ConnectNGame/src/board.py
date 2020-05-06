@@ -13,7 +13,8 @@ class Board(object):
         self.contents = [[self.blank for col in range(self.cols)] for row in range(self.rows)]
 
     def __getitem__(self, item) -> list:
-        return self.contents
+        x,y=item
+        return self.my_list[x][y]
 
     def place_piece(self, row: int, col: int, symbol: str) -> None:
         self.my_list[row][col] = symbol
