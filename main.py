@@ -10,7 +10,6 @@ def main() -> None:
     #config_address=str(sys.argv[1])'
     config_address = "E:\\coding programs\\ConnectN\\config_files\\3X3X3.txt"
     game1=config1.get_from_file(config_address)
-    game1.setup_players()
     game1.start_game()
 
 
@@ -19,3 +18,4 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
+#"/Users/audeclairemoats/PycharmProject/ConnectN/config_files/3X3X3.txt"
