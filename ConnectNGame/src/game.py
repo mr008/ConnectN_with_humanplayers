@@ -22,7 +22,7 @@ class Game(object):
 
     def get_num_rows(self):
         return self.num_rows
-    
+
     def get_board(self):
         return self.board
 
@@ -142,6 +142,22 @@ class Game(object):
     def start_game(self):
         self.setup_players()
         print(self.board)
+        while True:
+            playcol1 = input('{}, please enter the column you want to play in'.format(self.get_player(self.get_current()).get_name()))
+            if (type(playcol1) != int):
+                print('{}, column needs to be an integer.{} is not an integer.'.format(
+                    self.get_player(self.get_current()).get_name(), playcol1))
+                continue
+            else:
+                for i in range(self.get_num_rows() - 1, -1, -1):
+                    if (self.get_board().get_my_list(i, playcol1) == self.get_board().get_blank()):
+                        self.get_board().place_piece(i, playcol1, self.get_player(self.get_current()).get_piece())
+                        print(self.get_board())
+                        break
+            if (self.check_har_win(self.get_player(self.get_current())) | self.check_ver_win( self.get_player(self.get_current())) | self.check_obli_win(self.get_player(self.get_current()))):
+                print('{} won the game!'.format(self.get_player(self.get_current()).get_name()))
+                break
+            self.switch_player()
 
 
 
