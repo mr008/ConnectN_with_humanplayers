@@ -94,9 +94,9 @@ class Game(object):
             return "Player2 win"
 
     def check_har_win(self,player):
-        for rows in range(self.board.cols):
+        for rows in range(self.board.rows):
             counter = 0
-            for cols in range(self.board.rows):
+            for cols in range(self.board.cols):
                 if self.board[(rows,cols)] == self.board.get_blank():
                     counter = 0
                 if self.board[(rows,cols)] == player.get_piece():
