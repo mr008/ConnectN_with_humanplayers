@@ -90,7 +90,7 @@ class Game(object):
         for rows in range(self.board.rows):
             counter = 0
             for cols in range(self.board.cols):
-                if self.board[(rows,cols)] == self.board.get_blank():
+                if self.board[(rows,cols)] != player.get_piece():
                     counter = 0
                 if self.board[(rows,cols)] == player.get_piece():
                     counter += 1
@@ -120,7 +120,7 @@ class Game(object):
             step=0
             for rows in range(self.board.rows):
                 if rows<self.board.rows and cols+step<self.board.cols:
-                    if self.board[(rows, cols + step)] == self.board.get_blank():
+                    if self.board[(rows, cols + step)] != player.get_piece():
                         counter = 0
                         step = 0
                     if self.board[(rows,cols+step)] == player.get_piece():
@@ -138,7 +138,7 @@ class Game(object):
         for cols in range(self.board.cols):
             counter=0
             for rows in range(self.board.rows):
-                if self.board[(rows,cols)] == self.board.get_blank():
+                if self.board[(rows,cols)] != player.get_piece():
                     counter=0
                 if self.board[(rows,cols)] == player.get_piece():
                     counter+=1
