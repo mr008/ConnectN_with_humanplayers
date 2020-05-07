@@ -19,7 +19,7 @@ class Board(object):
     def place_piece(self, row: int, col: int, symbol: str) -> None:
         self.my_list[row][col] = symbol
 
-    def get_cols(self):
+    def get_cols(self) -> int:
         return self.cols
 
     def get_blank(self) -> str:
@@ -34,7 +34,7 @@ class Board(object):
     def get_in_my_list(self) -> list:
         return self.in_my_list
 
-    def __str__(self) -> None:
+    def __str__(self) -> str:
         to_print = ' '
         for k in range(self.cols):
             to_print += ' ' + str(k)

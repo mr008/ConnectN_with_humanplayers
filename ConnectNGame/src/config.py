@@ -1,9 +1,10 @@
-from . import game
+import ConnectNGame
+from ConnectNGame.src.game import Game
 
 
 class Config(object):
 
-    def get_from_file(self, config_address):
+    def get_from_file(self, config_address: str)-> Game:
         # config_address=str(sys.argv[1])
         # config_address = "E:\\coding programs\\ConnectN\\config_files\\3X3X3.txt"
         board_config = {}
@@ -15,4 +16,4 @@ class Config(object):
         num_rows = board_config["num_rows"]
         num_pieces_to_win = board_config["num_pieces_to_win"]
         num_cols = board_config["num_cols"]
-        return game.Game(blank_char, num_rows, num_pieces_to_win, num_cols)
+        return ConnectNGame.src.game.Game(blank_char, num_rows, num_pieces_to_win, num_cols)

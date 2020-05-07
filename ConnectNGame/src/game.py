@@ -3,7 +3,7 @@ from ConnectNGame.src.player import Player
 from ConnectNGame.src.board import Board
 class Game(object):
     def __init__(self,blank_char: str,num_rows: str,num_pieces_to_win: str,num_cols: str) -> None:
-        self.players = []
+        self.players: List[str] = []
         self.blank_char = blank_char
         self.num_rows = int(num_rows)
         self.num_pieces_to_win = int(num_pieces_to_win)
