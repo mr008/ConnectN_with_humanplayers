@@ -172,11 +172,12 @@ class Game(object):
                         break
                 moves += 1
                 print(self.get_board())
+            if (moves/2 >= self.num_pieces_to_win):
+                if self.check_all_win(self.get_player(self.get_current())) :
+                    print('{} won the game!'.format(self.get_player(self.get_current()).get_name()))
+                    break
             if (moves == self.num_cols * self.num_rows):
                 print("Tie Game.")
-                break
-            if self.check_all_win(self.get_player(self.get_current())) :
-                print('{} won the game!'.format(self.get_player(self.get_current()).get_name()))
                 break
             self.switch_player()
 

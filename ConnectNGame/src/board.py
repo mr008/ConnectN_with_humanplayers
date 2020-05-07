@@ -16,13 +16,12 @@ class Board(object):
         x,y=item
         return self.my_list[x][y]
 
-     def place_piece(self, row: int, col: int, symbol: str) -> None:
+    def place_piece(self, row: int, col: int, symbol: str) -> None:
         self.my_list[row][col] = symbol
 
-    def check_full(self):
-        ...
     def get_cols(self):
         return self.cols
+
     def get_blank(self) -> str:
         return self.blank
 
