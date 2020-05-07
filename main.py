@@ -15,4 +15,4 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
-#"/Users/audeclairemoats/PycharmProject/ConnectN/config_files/3X3X3.txt"
+#"/Users/audeclairemoats/PycharmProject/ConnectN/config_files/3X3X3.txt""E:\\coding programs\\ConnectN\\config_files\\3X3X3.txt"

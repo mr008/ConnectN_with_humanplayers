@@ -20,7 +20,8 @@ class Board(object):
         self.my_list[row][col] = symbol
     def check_full(self):
         ...
-
+    def get_cols(self):
+        return self.cols
     def get_blank(self) -> str:
         return self.blank
 

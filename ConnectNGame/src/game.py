@@ -85,16 +85,9 @@ class Game(object):
         self.players.append(player1)
         self.players.append(player2)
         return
-    def winning_checking(self):
-        if self.check_har_win(self.player1) or self.check_left_obl(self.player1) \
-                or self.check_right_obl(self.player1) or self.check_ver_win(self.player1):
-            return "Player1 win"
-        elif self.check_har_win(self.player1) or self.check_left_obl(self.player1) \
-                or self.check_right_obl(self.player1) or self.check_ver_win(self.player1):
-            return "Player2 win"
 
     def check_har_win(self,player):
-        for rows in range(self.board.cols):
+        for rows in range(self.board.get_cols()):
             counter = 0
             for cols in range(self.board.rows):
                 if self.board[(rows,cols)] == self.board.get_blank():
@@ -107,7 +100,7 @@ class Game(object):
         return False
 
     def check_left_obl(self,player):
-        for cols in range(self.board.cols):
+        for cols in range(self.board.get_cols()):
             counter = 0
             step=0
             for rows in range(self.board.rows):
@@ -122,7 +115,7 @@ class Game(object):
 
         return False
     def check_right_obl(self,player):
-        for cols in range(self.board.cols):
+        for cols in range(self.board.get_cols()):
             counter = 0
             step=0
             for rows in range(self.board.rows):
