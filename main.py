@@ -7,8 +7,8 @@ from ConnectNGame.src.config import Config
 def main() -> None:
 
     config1=Config()
-    config_address=str(sys.argv[1])
-    #config_address = "/Users/audeclairemoats/PycharmProject/ConnectN/config_files/connect4.txt"
+    #config_address=str(sys.argv[1])
+    config_address = "C:\\Users\\Wendong Song\\PycharmProjects\\ConnectN\\config_files\\connect4.txt"
     game1=config1.get_from_file(config_address)
     game1.start_game()
 
