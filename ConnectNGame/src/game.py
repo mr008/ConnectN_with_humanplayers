@@ -108,8 +108,9 @@ class Game(object):
                     counter = 0
                     step = 0
                 if self.board[(rows, cols-step)] == player.get_piece():
-                    counter += 1
-                    step += 1
+                    if cols-step>=0:
+                        counter += 1
+                        step += 1
                     if counter == self.num_pieces_to_win:
                         return True
 
@@ -172,11 +173,12 @@ class Game(object):
                         break
                 moves += 1
                 print(self.get_board())
-            if (moves == self.num_cols * self.num_rows):
-                print("Tie Game.")
-                break
+
             if self.check_all_win(self.get_player(self.get_current())) :
                 print('{} won the game!'.format(self.get_player(self.get_current()).get_name()))
+                break
+            if (moves == self.num_cols * self.num_rows):
+                print("Tie Game.")
                 break
             self.switch_player()
 
