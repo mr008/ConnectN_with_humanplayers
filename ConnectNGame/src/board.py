@@ -12,13 +12,13 @@ class Board(object):
             self.my_list.append(copy.deepcopy(self.in_my_list))
         self.contents = [[self.blank for col in range(self.cols)] for row in range(self.rows)]
 
-    def __getitem__(self, item) -> list:
+    def __getitem__(self, item: list) -> str:
         x,y=item
         return self.my_list[x][y]
 
-
-    def place_piece(self, row: int, col: int, symbol: str) -> None:
+     def place_piece(self, row: int, col: int, symbol: str) -> None:
         self.my_list[row][col] = symbol
+
     def check_full(self):
         ...
     def get_cols(self):

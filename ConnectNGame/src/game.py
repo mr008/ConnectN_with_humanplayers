@@ -2,7 +2,7 @@ import sys
 from ConnectNGame.src.player import Player
 from ConnectNGame.src.board import Board
 class Game(object):
-    def __init__(self,blank_char,num_rows,num_pieces_to_win,num_cols):
+    def __init__(self,blank_char: str,num_rows: str,num_pieces_to_win: str,num_cols: str) -> None:
         self.players = []
         self.blank_char = blank_char
         self.num_rows = int(num_rows)
@@ -11,26 +11,26 @@ class Game(object):
         self.board = Board(self.num_rows,self.num_cols,blank_char)
         self.current = 0
 
-    def switch_player(self):
+    def switch_player(self) -> None:
         self.current += 1
         if (self.current == 2):
             self.current = 0
-    def get_player(self, num):
+    def get_player(self, num: int) -> Player:
         return self.players[num]
 
-    def get_num_cols(self):
+    def get_num_cols(self)-> int:
         return self.num_cols
 
-    def get_num_rows(self):
+    def get_num_rows(self) -> int:
         return self.num_rows
 
-    def get_board(self):
+    def get_board(self) -> Board:
         return self.board
 
-    def get_current(self):
+    def get_current(self) -> int:
         return self.current
 
-    def setup_players(self):
+    def setup_players(self) -> None:
         while True:
             try:
                 playname1 = input('Player 1 enter your name: ')
@@ -86,7 +86,7 @@ class Game(object):
         self.players.append(player2)
         return
 
-    def check_har_win(self,player):
+    def check_har_win(self,player: Player) -> bool:
         for rows in range(self.board.rows):
             counter = 0
             for cols in range(self.board.cols):
@@ -99,7 +99,7 @@ class Game(object):
 
         return False
 
-    def check_left_obl(self,player):
+    def check_left_obl(self,player: Player) -> bool:
         for cols in range(self.board.cols):
             counter = 0
             step=0
@@ -114,7 +114,7 @@ class Game(object):
                         return True
 
         return False
-    def check_right_obl(self,player):
+    def check_right_obl(self,player: Player) -> bool:
         for cols in range(self.board.get_cols()):
             counter = 0
             step=0
@@ -134,7 +134,7 @@ class Game(object):
 
 
 
-    def check_ver_win(self,player):
+    def check_ver_win(self,player: Player) -> bool:
         for cols in range(self.board.cols):
             counter=0
             for rows in range(self.board.rows):
@@ -146,7 +146,7 @@ class Game(object):
                         return True
         return False
 
-    def check_all_win(self,player):
+    def check_all_win(self,player: Player) -> bool:
         win1 = self.check_ver_win(player)
         win2 = self.check_right_obl(player)
         win3 = self.check_left_obl(player)
@@ -156,7 +156,7 @@ class Game(object):
 
 
 
-    def start_game(self):
+    def start_game(self) -> None:
         self.setup_players()
         print(self.board)
         while True:

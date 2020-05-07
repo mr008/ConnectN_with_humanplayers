@@ -1,6 +1,6 @@
 
 class Player(object):
-    def __init__(self,name, piece):
+    def __init__(self,name: str, piece: str) -> None:
         self.name = name
         self.piece = piece
 
