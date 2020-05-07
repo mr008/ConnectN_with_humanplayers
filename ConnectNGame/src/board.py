@@ -1,4 +1,5 @@
 import copy
+from typing import Tuple
 class Board(object):
     def __init__(self,ro: int, col: int, bla: str) -> None:
         self.rows = int(ro)
@@ -12,7 +13,7 @@ class Board(object):
             self.my_list.append(copy.deepcopy(self.in_my_list))
         self.contents = [[self.blank for col in range(self.cols)] for row in range(self.rows)]
 
-    def __getitem__(self, item: list) -> str:
+    def __getitem__(self, item: Tuple[int,int]) -> str:
         x,y=item
         return self.my_list[x][y]
 
