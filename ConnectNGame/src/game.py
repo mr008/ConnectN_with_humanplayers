@@ -90,7 +90,7 @@ class Game(object):
         for rows in range(self.board.rows):
             counter = 0
             for cols in range(self.board.cols):
-                if self.board[(rows,cols)] == self.board.get_blank():
+                if self.board[(rows,cols)] != player.get_piece():
                     counter = 0
                 if self.board[(rows,cols)] == player.get_piece():
                     counter += 1
@@ -100,16 +100,16 @@ class Game(object):
         return False
 
     def check_left_obl(self,player: Player) -> bool:
-        for cols in range(self.board.cols):
+        for cols in range(self.board.get_cols()):
             counter = 0
-            step=0
+            step = 0
             for rows in range(self.board.rows):
-                step+=1
-                if self.board[(rows,cols)] == self.board.get_blank():
+                if self.board[(rows, cols-step)] != player.get_piece():
                     counter = 0
-                    step=0
-                if self.board[(rows,cols-step)] == player.get_piece():
+                    step = 0
+                if self.board[(rows, cols-step)] == player.get_piece():
                     counter += 1
+                    step += 1
                     if counter == self.num_pieces_to_win:
                         return True
 
@@ -119,10 +119,10 @@ class Game(object):
             counter = 0
             step=0
             for rows in range(self.board.rows):
-                if self.board[(rows,cols)] == self.board.get_blank():
-                    counter = 0
-                    step=0
                 if rows<self.board.rows and cols+step<self.board.cols:
+                    if self.board[(rows, cols + step)] != player.get_piece():
+                        counter = 0
+                        step = 0
                     if self.board[(rows,cols+step)] == player.get_piece():
                         counter += 1
                         step += 1
@@ -138,7 +138,7 @@ class Game(object):
         for cols in range(self.board.cols):
             counter=0
             for rows in range(self.board.rows):
-                if self.board[(rows,cols)] == self.board.get_blank():
+                if self.board[(rows,cols)] != player.get_piece():
                     counter=0
                 if self.board[(rows,cols)] == player.get_piece():
                     counter+=1
