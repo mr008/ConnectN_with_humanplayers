@@ -87,9 +87,9 @@ class Game(object):
         return
 
     def check_har_win(self,player):
-        for rows in range(self.board.get_cols()):
+        for cols in range(self.board.cols):
             counter = 0
-            for cols in range(self.board.rows):
+            for rows in range(self.board.rows):
                 if self.board[(rows,cols)] == self.board.get_blank():
                     counter = 0
                 if self.board[(rows,cols)] == player.get_piece():
@@ -100,7 +100,7 @@ class Game(object):
         return False
 
     def check_left_obl(self,player):
-        for cols in range(self.board.get_cols()):
+        for cols in range(self.board.cols):
             counter = 0
             step=0
             for rows in range(self.board.rows):
@@ -115,7 +115,7 @@ class Game(object):
 
         return False
     def check_right_obl(self,player):
-        for cols in range(self.board.get_cols()):
+        for cols in range(self.board.cols):
             counter = 0
             step=0
             for rows in range(self.board.rows):
@@ -135,7 +135,7 @@ class Game(object):
 
 
     def check_ver_win(self,player):
-        for cols in range(self.board.cols):
+        for cols in range(self.board.cols - 1):
             counter=0
             for rows in range(self.board.rows):
                 if self.board[(rows,cols)] == self.board.get_blank():
