@@ -159,6 +159,7 @@ class Game(object):
     def start_game(self) -> None:
         self.setup_players()
         print(self.board)
+        moves = 0
         while True:
             playcol1 = int(input('{}, please enter the column you want to play in: '.format(self.get_player(self.get_current()).get_name())))
             if (type(playcol1) != int):
@@ -168,8 +169,12 @@ class Game(object):
                 for i in range(self.get_num_rows() - 1, -1, -1):
                     if (self.get_board().from_my_list(i, playcol1) == self.get_board().get_blank()):
                         self.get_board().place_piece(i, playcol1, self.get_player(self.get_current()).get_piece())
-                        print(self.get_board())
                         break
+                moves += 1
+                print(self.get_board())
+            if (moves == self.num_cols * self.num_rows):
+                print("Tie Game.")
+                break
             if self.check_all_win(self.get_player(self.get_current())) :
                 print('{} won the game!'.format(self.get_player(self.get_current()).get_name()))
                 break
