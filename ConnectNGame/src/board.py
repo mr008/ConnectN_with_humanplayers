@@ -35,6 +35,18 @@ class Board(object):
     def get_in_my_list(self) -> list:
         return self.in_my_list
 
+    def check_full(self,col: int) -> bool:
+        count = 0
+        for i in range(self.rows):
+            if(self.my_list[i][col] != self.blank):
+                count+=1
+        if count == self.rows:
+            return True
+        return False
+
+
+
+
     def __str__(self) -> str:
         to_print = ' '
         for k in range(self.cols):
