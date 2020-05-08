@@ -19,8 +19,6 @@ class Board(object):
     def place_piece(self, row: int, col: int, symbol: str) -> None:
         self.my_list[row][col] = symbol
 
-    def check_full(self):
-        ...
     def get_cols(self):
         return self.cols
     def get_blank(self) -> str:
