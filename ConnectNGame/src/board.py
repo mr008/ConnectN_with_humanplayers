@@ -44,9 +44,6 @@ class Board(object):
             return True
         return False
 
-
-
-
     def __str__(self) -> str:
         to_print = ' '
         for k in range(self.cols):
