@@ -21,8 +21,8 @@ class TestBoard(unittest.TestCase):
     def test_print_list(self):
         board1=Board(3,3,"*")
         capture = PrintCapturer()
-        with patch('ConnectNGame.src.board.Board', side_effect=capture):
-            print(board1)
+        with patch('ConnectNGame.src.board.Board.print_board', side_effect=capture):
+            board1.print_board()
             answer = [" 012",
                   "0***",
                   "1***",

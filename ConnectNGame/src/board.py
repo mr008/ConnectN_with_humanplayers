@@ -56,3 +56,6 @@ class Board(object):
             if (i < (self.rows - 1)):
                 to_print += '\n'
         return (to_print)
+
+    def print_board(self):
+        print(self)
