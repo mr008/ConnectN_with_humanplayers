@@ -5,9 +5,9 @@ class Player(object):
         self.piece = piece
 
 
-    def get_name(self):
+    def get_name(self) -> str:
         return self.name
 
-    def get_piece(self):
+    def get_piece(self) -> str:
         return self.piece
 

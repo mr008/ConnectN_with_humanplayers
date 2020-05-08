@@ -1,9 +1,10 @@
 import sys
+from typing import List
 from ConnectNGame.src.player import Player
 from ConnectNGame.src.board import Board
 class Game(object):
     def __init__(self,blank_char: str,num_rows: str,num_pieces_to_win: str,num_cols: str) -> None:
-        self.players = []
+        self.players: List[Player] = []
         self.blank_char = blank_char
         self.num_rows = int(num_rows)
         self.num_pieces_to_win = int(num_pieces_to_win)
@@ -108,9 +109,8 @@ class Game(object):
                     counter = 0
                     step = 0
                 if self.board[(rows, cols-step)] == player.get_piece():
-                    if cols-step>=0:
-                        counter += 1
-                        step += 1
+                    counter += 1
+                    step += 1
                     if counter == self.num_pieces_to_win:
                         return True
 
@@ -173,10 +173,10 @@ class Game(object):
                         break
                 moves += 1
                 print(self.get_board())
-
-            if self.check_all_win(self.get_player(self.get_current())) :
-                print('{} won the game!'.format(self.get_player(self.get_current()).get_name()))
-                break
+            if (moves/2 >= self.num_pieces_to_win):
+                if self.check_all_win(self.get_player(self.get_current())) :
+                    print('{} won the game!'.format(self.get_player(self.get_current()).get_name()))
+                    break
             if (moves == self.num_cols * self.num_rows):
                 print("Tie Game.")
                 break
