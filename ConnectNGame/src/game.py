@@ -19,18 +19,6 @@ class Game(object):
     def get_player(self, num: int) -> Player:
         return self.players[num]
 
-    def get_num_cols(self)-> int:
-        return self.num_cols
-
-    def get_num_rows(self) -> int:
-        return self.num_rows
-
-    def get_board(self) -> Board:
-        return self.board
-
-    def get_current(self) -> int:
-        return self.current
-
     def setup_players(self) -> None:
         while True:
             try:
@@ -162,20 +150,20 @@ class Game(object):
         print(self.board)
         moves = 0
         while True:
-            playcol1 = int(input('{}, please enter the column you want to play in: '.format(self.get_player(self.get_current()).get_name())))
+            playcol1 = int(input('{}, please enter the column you want to play in: '.format(self.get_player(self.current).get_name())))
             if (type(playcol1) != int):
-                print('{}, column needs to be an integer.{} is not an integer.'.format(self.get_player(self.get_current()).get_name(), playcol1))
+                print('{}, column needs to be an integer.{} is not an integer.'.format(self.get_player(self.current).get_name(), playcol1))
                 continue
             else:
-                for i in range(self.get_num_rows() - 1, -1, -1):
-                    if (self.get_board().from_my_list(i, playcol1) == self.get_board().get_blank()):
-                        self.get_board().place_piece(i, playcol1, self.get_player(self.get_current()).get_piece())
+                for i in range(self.num_rows - 1, -1, -1):
+                    if (self.board.from_my_list(i, playcol1) == self.board.get_blank()):
+                        self.board.place_piece(i, playcol1, self.get_player(self.current).get_piece())
                         break
                 moves += 1
-                print(self.get_board())
+                print(self.board)
             if (moves/2 >= self.num_pieces_to_win):
-                if self.check_all_win(self.get_player(self.get_current())) :
-                    print('{} won the game!'.format(self.get_player(self.get_current()).get_name()))
+                if self.check_all_win(self.get_player(self.current)) :
+                    print('{} won the game!'.format(self.get_player(self.current).get_name()))
                     break
             if (moves == self.num_cols * self.num_rows):
                 print("Tie Game.")
