@@ -97,8 +97,9 @@ class Game(object):
                     counter = 0
                     step = 0
                 if self.board[(rows, cols-step)] == player.get_piece():
-                    counter += 1
-                    step += 1
+                    if cols-step>=0:
+                        counter += 1
+                        step += 1
                     if counter == self.num_pieces_to_win:
                         return True
 
