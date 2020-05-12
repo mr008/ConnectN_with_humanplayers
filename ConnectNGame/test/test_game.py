@@ -141,8 +141,6 @@ class TestGame(unittest.TestCase):
         win = game2.check_ver_win(test_player)
         self.assertEqual(True, win)
 
-
-
         game2 = Game('*', '100', '50', '100')
         test_player = Player('sam', '!')
         for i in range(50):
