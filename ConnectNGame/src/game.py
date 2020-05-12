@@ -30,11 +30,12 @@ class Game(object):
                 continue
 
             try:
-                playpiece1 = input('Player 1 enter your piece: ')
-                if ((playpiece1.strip() != "") & (playpiece1 != ' ') & (playpiece1 != self.board.get_blank()) & (
+                playpiece = input('Player 1 enter your piece: ')
+                playpiece1 = playpiece.strip()
+                if ((playpiece1 != "") & (playpiece1 != ' ') & (playpiece1 != self.board.get_blank()) & (
                         len(playpiece1) == 1)):
                     break
-                elif ((playpiece1.strip() == "") | (playpiece1 == ' ')):
+                elif ((playpiece1 == "") | (playpiece1 == ' ')):
                     raise ValueError('Your piece cannot be the empty string or whitespace.')
                     continue
                 elif (playpiece1 == self.board.get_blank()):
@@ -50,11 +51,12 @@ class Game(object):
             try:
                 playname2 = input('Player 2 enter your name: ')
                 if ((playname2.strip() != "") & (playname2 != ' ') & (playname2.lower() != playname1.lower())):
-                    playpiece2 = input('Player 2 enter your piece: ')
-                    if ((playpiece2.strip() != "") & (playpiece2 != ' ') & (playpiece2 != self.board.get_blank()) & (
+                    p2_playpiece = input('Player 2 enter your piece: ')
+                    playpiece2 = p2_playpiece.strip()
+                    if ((playpiece2 != "") & (playpiece2 != ' ') & (playpiece2 != self.board.get_blank()) & (
                             len(playpiece2) == 1) & (playpiece2 != playpiece1)):
                         break
-                    elif ((playpiece2.strip() == "") | (playpiece2 == ' ')):
+                    elif ((playpiece2 == "") | (playpiece2 == ' ')):
                         raise ValueError('Your piece cannot be the empty string or whitespace.')
                         continue
 
