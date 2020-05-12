@@ -1,5 +1,7 @@
 import unittest
+from ConnectNGame.src.player import Player
 from unittest.mock import patch
+from ConnectNGame.src.board import Board
 from ConnectNGame.src.game import Game
 
 class TestGame(unittest.TestCase):
@@ -21,10 +23,38 @@ class TestGame(unittest.TestCase):
 
 
     def test_check_left_obl(self):
-        pass
+        testgame=Game("*","3","3","3")
+        testplayer=Player("#","#")
+        testgame.board.place_piece(2, 0, '#')
+        testgame.board.place_piece(1,1,"#")
+        testgame.board.place_piece(0,2,"#")
+        bool=testgame.check_left_obl(testplayer)
+        self.assertEqual(bool,True)
+
+        testgame = Game("*", "3", "3", "3")
+        testplayer = Player("#", "#")
+        testgame.board.place_piece(0, 0, '#')
+        testgame.board.place_piece(1, 1, "#")
+        testgame.board.place_piece(2, 2, "#")
+        bool = testgame.check_left_obl(testplayer)
+        self.assertEqual(bool, False)
 
     def test_check_right_obl(self):
-        pass
+        testgame = Game("*", "3", "3", "3")
+        testplayer = Player("#", "#")
+        testgame.board.place_piece(0, 0, '#')
+        testgame.board.place_piece(1, 1, "#")
+        testgame.board.place_piece(2, 2, "#")
+        bool = testgame.check_right_obl(testplayer)
+        self.assertEqual(bool, True)
+
+        testgame = Game("*", "3", "3", "3")
+        testplayer = Player("#", "#")
+        testgame.board.place_piece(2, 0, '#')
+        testgame.board.place_piece(1, 1, "#")
+        testgame.board.place_piece(0, 2, "#")
+        bool = testgame.check_right_obl(testplayer)
+        self.assertEqual(bool, False)
 
     def test_ver_win(self):
         game2 = Game('*', '6', '4', '6')
