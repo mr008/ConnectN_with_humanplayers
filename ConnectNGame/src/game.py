@@ -24,15 +24,13 @@ class Game(object):
 
     def setup_players(self) -> None:
         while True:
-            try:
-                playname1 = input('Player 1 enter your name: ')
-                playname1.strip()
-                if ((playname1 == '') | (playname1 == ' ')):
-                    raise ValueError('Your name cannot be the empty string or whitespace.')
-                    continue
-                break
-            except ValueError as r:
-                print(r)
+            playname = input('Player 1 enter your name: ')
+            playname1 = playname.strip()
+            if (playname1 == "") | (playname1 == ' '):
+                print('Your name cannot be the empty string or whitespace.')
+                continue
+            break
+
         while True:
             try:
                 playpiece1 = input('Player 1 enter your piece: ')
@@ -164,7 +162,7 @@ class Game(object):
             try:
                 int(playcol1)
             except ValueError:
-                print('{}, column needs to be an integer.{} is not an integer.'.format(self.get_player(self.current).get_name(), playcol1))
+                print('{}, column needs to be an integer. {} is not an integer.'.format(self.get_player(self.current).get_name(), playcol1))
                 continue
             if (int(playcol1) < 0) | (int(playcol1) > (self.num_cols - 1)):
                 print('Your column needs to be between 0 and {} but is actually {}.'.format(self.num_cols - 1, playcol1))
