@@ -10,8 +10,15 @@ class TestGame(unittest.TestCase):
         my_game.switch_player()
         my_game.switch_player()
         self.assertEqual(my_game.current,1)
+
     def test_har_win(self):
-        pass
+        game1 = Game('*','6','4','6')
+        game1.setup_players()
+        game1.board()
+        game1.check_har_win(game1.players[0])
+        self.assertEqual()
+
+
 
     def test_check_left_obl(self):
         pass
@@ -20,7 +27,8 @@ class TestGame(unittest.TestCase):
         pass
 
     def test_ver_win(self):
-        pass
+        game2 = Game('*', '6', '4', '6')
+
 
     def test_setup_player(self):
         my_game = Game('*', '6', '4', '6')
