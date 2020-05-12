@@ -18,7 +18,7 @@ class TestBoard(unittest.TestCase):
 
 
 
-    def test_print_list(self):
+    def test_print_board(self):
         board1=Board(3,3,"*")
         capture = PrintCapturer()
         with patch('ConnectNGame.src.board.Board.print_board', side_effect=capture):
