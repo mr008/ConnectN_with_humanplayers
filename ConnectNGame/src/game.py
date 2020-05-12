@@ -33,18 +33,18 @@ class Game(object):
             try:
                 playpiece = input('Player 1 enter your piece: ')
                 playpiece1 = playpiece.strip()
-                if ((playpiece1 != "") & (playpiece1 != ' ') & (playpiece1 != self.board.get_blank()) & (
-                        len(playpiece1) == 1)):
+                if (playpiece1 != "") & (playpiece1 != ' ') & (playpiece1 != self.board.get_blank()) & (
+                        len(playpiece1) == 1):
                     break
-                elif ((playpiece1 == "") | (playpiece1 == ' ')):
+                elif (playpiece1 == "") | (playpiece1 == ' '):
                     raise ValueError('Your piece cannot be the empty string or whitespace.')
-                    continue
-                elif (playpiece1 == self.board.get_blank()):
+
+                elif playpiece1 == self.board.get_blank():
                     raise ValueError('Your piece cannot be the same as the blank character.')
-                    continue
-                elif (len(playpiece1) != 1):
+
+                elif len(playpiece1) != 1:
                     raise ValueError('{} is not a single character. Your piece can only be a single character.'.format(playpiece1))
-                    continue
+
             except ValueError as r:
                 print(r)
         player1 = Player(playname1, playpiece1)
@@ -52,38 +52,38 @@ class Game(object):
             try:
                 p2_playname = input('Player 2 enter your name: ')
                 playname2 = p2_playname.strip()
-                if ((playname2 != "") & (playname2 != ' ') & (playname2.lower() != playname1.lower())):
+                if (playname2 != "") & (playname2 != ' ') & (playname2.lower() != playname1.lower()):
                     p2_playpiece = input('Player 2 enter your piece: ')
                     playpiece2 = p2_playpiece.strip()
                     if ((playpiece2 != "") & (playpiece2 != ' ') & (playpiece2 != self.board.get_blank()) & (
                             len(playpiece2) == 1) & (playpiece2 != playpiece1)):
                         break
-                    elif ((playpiece2 == "") | (playpiece2 == ' ')):
+                    elif (playpiece2 == "") | (playpiece2 == ' '):
                         raise ValueError('Your piece cannot be the empty string or whitespace.')
-                        continue
 
-                    elif (playpiece2 == self.board.get_blank()):
+
+                    elif playpiece2 == self.board.get_blank():
                         raise ValueError('Your piece cannot be the same as the blank character.')
-                        continue
 
-                    elif (len(playpiece2) != 1):
+
+                    elif len(playpiece2) != 1:
                         raise ValueError(
                             '{} is not a single character. Your piece can only be a single character.'.format(
                                 playpiece2))
-                        continue
 
-                    elif (playpiece2 == playpiece1):
+
+                    elif playpiece2 == playpiece1:
                         raise ValueError(
                             'You cannot use {} for your piece as {} is already using it.'.format(playpiece2,
                                                                                                  player1.get_name()))
-                        continue
-                elif ((playname2 == "") | (playname2 == ' ')):
+
+                elif (playname2 == "") | (playname2 == ' '):
                     raise ValueError('Your name cannot be the empty string or whitespace.')
-                    continue
-                elif (playname2.lower() == playname1.lower()):
+
+                elif playname2.lower() == playname1.lower():
                     raise ValueError(
                         'You cannot use {} for your name as someone else is already using it.'.format(playname2))
-                    continue
+
             except ValueError as r:
                 print(r)
         player2 = Player(playname2, playpiece2)
@@ -170,25 +170,25 @@ class Game(object):
             except ValueError:
                 print('{}, column needs to be an integer. {} is not an integer.'.format(self.get_player(self.current).get_name(), playcol1))
                 continue
-            if (int(playcol1) < 0) | (int(playcol1) > (self.num_cols - 1)):
+            if (int(playcol1) < 0 )| (int(playcol1) > (self.num_cols - 1)):
                 print('Your column needs to be between 0 and {} but is actually {}.'.format(self.num_cols - 1, playcol1))
                 continue
-            if (self.board.check_full(int(playcol1))):
+            if self.board.check_full(int(playcol1)):
                 print('You cannot play in {} because it is full.'.format(playcol1))
                 continue
             else:
                 int(playcol1)
                 for i in range(self.num_rows - 1, -1, -1):
-                    if (self.board.from_my_list(i, int(playcol1)) == self.board.get_blank()):
+                    if self.board.from_my_list(i, int(playcol1)) == self.board.get_blank():
                         self.board.place_piece(i, int(playcol1), self.get_player(self.current).get_piece())
                         break
                 moves += 1
                 print(self.board)
-            if (moves / 2 >= self.num_pieces_to_win):
+            if moves / 2 >= self.num_pieces_to_win:
                 if self.check_all_win(self.get_player(self.current)):
                     print('{} won the game!'.format(self.get_player(self.current).get_name()))
                     break
-            if (moves == self.num_cols * self.num_rows):
+            if moves == self.num_cols * self.num_rows:
                 print("Tie Game.")
                 break
             self.switch_player()
