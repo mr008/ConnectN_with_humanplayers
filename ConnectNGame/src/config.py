@@ -1,11 +1,13 @@
 import ConnectNGame
 from ConnectNGame.src.game import Game
+import sys
+
 
 
 class Config(object):
 
     def get_from_file(self, config_address: str)-> Game:
-        config_address=str(sys.argv[1])
+        #config_address=str(sys.argv[1])
         # config_address = "E:\\coding programs\\ConnectN\\config_files\\3X3X3.txt"
         board_config = {}
         with open(config_address) as ca:
