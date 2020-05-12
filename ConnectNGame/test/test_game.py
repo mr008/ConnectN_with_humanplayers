@@ -15,10 +15,11 @@ class TestGame(unittest.TestCase):
 
     def test_har_win(self):
         game1 = Game('*','6','4','6')
-        game1.setup_players()
-        game1.board()
-        game1.check_har_win(game1.players[0])
-        self.assertEqual()
+        test_player = Player('sam','@')
+        for i in range(4):
+            game1.board.place_piece(3,i,'@')
+        win = game1.check_har_win(test_player)
+        self.assertEqual(True,win)
 
 
 
@@ -58,6 +59,11 @@ class TestGame(unittest.TestCase):
 
     def test_ver_win(self):
         game2 = Game('*', '6', '4', '6')
+        test_player = Player('sam', '@')
+        for i in range(4):
+            game2.board.place_piece(i, 4, '@')
+        win = game2.check_ver_win(test_player)
+        self.assertEqual(True, win)
 
 
     def test_setup_player(self):
