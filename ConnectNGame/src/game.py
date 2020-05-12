@@ -1,4 +1,4 @@
-import sys
+import  sys
 from typing import List
 from ConnectNGame.src.player import Player
 from ConnectNGame.src.board import Board
