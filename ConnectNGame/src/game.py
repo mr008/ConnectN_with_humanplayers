@@ -24,14 +24,13 @@ class Game(object):
 
     def setup_players(self) -> None:
         while True:
-            try:
-                playname1 = input('Player 1 enter your name: ')
-                if ((playname1 == '') | (playname1 == ' ')):
-                    raise ValueError('Your name cannot be the empty string or whitespace.')
-                    continue
-                break
-            except ValueError as r:
-                print(r)
+            playname = input('Player 1 enter your name: ')
+            playname1 = playname.strip()
+            if (playname1 == "") | (playname1 == ' '):
+                print('Your name cannot be the empty string or whitespace.')
+                continue
+            break
+
         while True:
             try:
                 playpiece1 = input('Player 1 enter your piece: ')
