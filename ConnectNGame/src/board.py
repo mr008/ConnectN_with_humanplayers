@@ -26,8 +26,8 @@ class Board(object):
     def get_blank(self) -> str:
         return self.blank
 
-    def from_my_list(self,r: int,c:int) -> str:
-        return self.my_list[r][c]
+    def from_my_list(self,ro: int,co:int) -> str:
+        return self.my_list[ro][co]
 
     def get_my_list(self) -> list:
         return self.my_list
