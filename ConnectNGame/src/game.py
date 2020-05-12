@@ -26,6 +26,7 @@ class Game(object):
         while True:
             try:
                 playname1 = input('Player 1 enter your name: ')
+                playname1.strip()
                 if ((playname1 == '') | (playname1 == ' ')):
                     raise ValueError('Your name cannot be the empty string or whitespace.')
                     continue
