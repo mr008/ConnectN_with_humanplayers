@@ -12,9 +12,9 @@ class TestBoard(unittest.TestCase):
 
     def test_check_full(self):
         board1 = Board(3, 3, "*")
-        board1.my_list = ("***", "*", "**")
+        board1.my_list = ("***", "***", "***")
         bool =board1.check_full(1)
-        self.assertEqual(bool, False)
+        self.assertEqual(bool, True)
 
 
 
