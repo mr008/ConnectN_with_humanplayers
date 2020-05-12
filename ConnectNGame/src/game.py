@@ -24,8 +24,9 @@ class Game(object):
 
     def setup_players(self) -> None:
         while True:
-            playname1 = input('Player 1 enter your name: ')
-            if (playname1.strip() == "") | (playname1 == ' '):
+            playname = input('Player 1 enter your name: ')
+            playname1 = playname.strip()
+            if (playname1 == "") | (playname1 == ' '):
                 print('Your name cannot be the empty string or whitespace.')
                 continue
 
@@ -49,8 +50,9 @@ class Game(object):
         player1 = Player(playname1, playpiece1)
         while True:
             try:
-                playname2 = input('Player 2 enter your name: ')
-                if ((playname2.strip() != "") & (playname2 != ' ') & (playname2.lower() != playname1.lower())):
+                p2_playname = input('Player 2 enter your name: ')
+                playname2 = p2_playname.strip()
+                if ((playname2 != "") & (playname2 != ' ') & (playname2.lower() != playname1.lower())):
                     p2_playpiece = input('Player 2 enter your piece: ')
                     playpiece2 = p2_playpiece.strip()
                     if ((playpiece2 != "") & (playpiece2 != ' ') & (playpiece2 != self.board.get_blank()) & (
@@ -75,7 +77,7 @@ class Game(object):
                             'You cannot use {} for your piece as {} is already using it.'.format(playpiece2,
                                                                                                  player1.get_name()))
                         continue
-                elif ((playname2.strip() == "") | (playname2 == ' ')):
+                elif ((playname2 == "") | (playname2 == ' ')):
                     raise ValueError('Your name cannot be the empty string or whitespace.')
                     continue
                 elif (playname2.lower() == playname1.lower()):
