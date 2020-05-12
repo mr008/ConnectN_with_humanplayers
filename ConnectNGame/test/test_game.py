@@ -24,12 +24,30 @@ class TestGame(unittest.TestCase):
         bool=testgame.check_left_obl(testplayer)
         self.assertEqual(bool,True)
 
+        testgame = Game("*", "4", "4", "4")
+        testplayer = Player("#", "!")
+        testgame.board.place_piece(3, 0, '!')
+        testgame.board.place_piece(2, 1, "!")
+        testgame.board.place_piece(1, 2, "!")
+        testgame.board.place_piece(0,3,"!")
+        bool = testgame.check_left_obl(testplayer)
+        self.assertEqual(bool, True)
+
         testgame = Game("*", "3", "3", "3")
         testplayer = Player("#", "#")
         testgame.board.place_piece(0, 0, '#')
         testgame.board.place_piece(1, 1, "#")
         testgame.board.place_piece(2, 2, "#")
         bool = testgame.check_left_obl(testplayer)
+        self.assertEqual(bool, False)
+
+        testgame = Game("*", "18", "16", "5")
+        testplayer = Player("#", "#")
+        testgame.board.place_piece(0, 3, '#')
+        testgame.board.place_piece(0, 2, "#")
+        testgame.board.place_piece(0, 1, "#")
+        testgame.board.place_piece(0, 0, "#")
+        bool = testgame.check_right_obl(testplayer)
         self.assertEqual(bool, False)
 
     def test_check_right_obl(self):
@@ -41,6 +59,16 @@ class TestGame(unittest.TestCase):
         bool = testgame.check_right_obl(testplayer)
         self.assertEqual(bool, True)
 
+        testgame = Game("*", "5", "5", "5")
+        testplayer = Player("#", "%")
+        testgame.board.place_piece(0, 0, '%')
+        testgame.board.place_piece(1, 1, "%")
+        testgame.board.place_piece(2, 2, "%")
+        testgame.board.place_piece(3,3,"%")
+        testgame.board.place_piece(4,4,"%")
+        bool = testgame.check_right_obl(testplayer)
+        self.assertEqual(bool, True)
+
         testgame = Game("*", "3", "3", "3")
         testplayer = Player("#", "#")
         testgame.board.place_piece(2, 0, '#')
@@ -48,6 +76,16 @@ class TestGame(unittest.TestCase):
         testgame.board.place_piece(0, 2, "#")
         bool = testgame.check_right_obl(testplayer)
         self.assertEqual(bool, False)
+
+        testgame = Game("*", "4", "4", "4")
+        testplayer = Player("#", "#")
+        testgame.board.place_piece(0, 3, '#')
+        testgame.board.place_piece(0, 2, "#")
+        testgame.board.place_piece(0, 1, "#")
+        testgame.board.place_piece(0, 0, "#")
+        bool = testgame.check_right_obl(testplayer)
+        self.assertEqual(bool, False)
+
 
     def test_ver_win(self):
         pass
