@@ -9,6 +9,9 @@ class TestBoard(unittest.TestCase):
         my_board = Board(4,6,'$')
         my_board.place_piece(3,2,'#')
         self.assertEqual(my_board.my_list[3][2],"#")
+        my_board2 = Board(4,3,'%')
+        my_board2.place_piece(0,0,'*')
+        self.assertEqual(my_board2.my_list[0][0],'*')
 
     def test_check_full(self):
         board1 = Board(3, 3, "*")
@@ -27,21 +30,6 @@ class TestBoard(unittest.TestCase):
         check2 = board3.check_full(0)
         self.assertEqual(check2, True)
 
-
-
-
-    def test_print_board(self):
-        """"
-        board1=Board(3,3,"*")
-        capture = PrintCapturer()
-        with patch('ConnectNGame.src.board.Board.print_board', side_effect=capture):
-            board1.print_board()
-            answer = [" 012",
-                  "0***",
-                  "1***",
-                  "2***"]
-            self.assertEqual(answer, capture.output)
-        """
 
 
 if __name__ == '__main__':
