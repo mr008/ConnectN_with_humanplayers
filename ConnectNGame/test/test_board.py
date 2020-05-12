@@ -4,10 +4,11 @@ from .print_capturer import PrintCapturer
 from ConnectNGame.src.board import Board
 
 class TestBoard(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, False)
-    def test_print_piece(self):
-        ...
+
+    def test_place_piece(self):
+        my_board = Board(4,6,'$')
+        my_board.place_piece(3,2,'#')
+        self.assertEqual(my_board.my_list[3][2],"#")
 
     def test_check_full(self):
         board1 = Board(3, 3, "*")
