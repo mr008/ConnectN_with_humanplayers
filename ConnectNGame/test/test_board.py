@@ -18,8 +18,8 @@ class TestBoard(unittest.TestCase):
 
 
 
-
     def test_print_board(self):
+        """"
         board1=Board(3,3,"*")
         capture = PrintCapturer()
         with patch('ConnectNGame.src.board.Board.print_board', side_effect=capture):
@@ -29,6 +29,7 @@ class TestBoard(unittest.TestCase):
                   "1***",
                   "2***"]
             self.assertEqual(answer, capture.output)
+        """
 
 
 if __name__ == '__main__':
