@@ -23,54 +23,63 @@ class Game(object):
         return self.players[num]
 
     def setup_players(self) -> None:
-
         while True:
+            playname1 = input('Player 1 enter your name: ')
+            if (playname1.strip() == "") | (playname1 == ' '):
+                print('Your name cannot be the empty string or whitespace.')
+                continue
+
             try:
-                playname1 = input('Player 1 enter your name: ')
-                if (playname1.strip() == "") | (playname1 == ' '):
-                    raise ValueError("Your name cannot be the empty string or whitespace.")
                 playpiece1 = input('Player 1 enter your piece: ')
                 if ((playpiece1.strip() != "") & (playpiece1 != ' ') & (playpiece1 != self.board.get_blank()) & (
                         len(playpiece1) == 1)):
                     break
                 elif ((playpiece1.strip() == "") | (playpiece1 == ' ')):
                     raise ValueError('Your piece cannot be the empty string or whitespace.')
+                    continue
                 elif (playpiece1 == self.board.get_blank()):
                     raise ValueError('Your piece cannot be the same as the blank character.')
+                    continue
                 elif (len(playpiece1) != 1):
-                    raise ValueError(
-                        '{} is not a single character. Your piece can only be a single character.'.format(playpiece1))
-                player1 = Player(playname1, playpiece1)
+                    raise ValueError('{} is not a single character. Your piece can only be a single character.'.format(playpiece1))
+                    continue
             except ValueError as r:
                 print(r)
-
+        player1 = Player(playname1, playpiece1)
         while True:
             try:
                 playname2 = input('Player 2 enter your name: ')
                 if ((playname2.strip() != "") & (playname2 != ' ') & (playname2.lower() != playname1.lower())):
-                    break
+                    playpiece2 = input('Player 2 enter your piece: ')
+                    if ((playpiece2.strip() != "") & (playpiece2 != ' ') & (playpiece2 != self.board.get_blank()) & (
+                            len(playpiece2) == 1) & (playpiece2 != playpiece1)):
+                        break
+                    elif ((playpiece2.strip() == "") | (playpiece2 == ' ')):
+                        raise ValueError('Your piece cannot be the empty string or whitespace.')
+                        continue
+
+                    elif (playpiece2 == self.board.get_blank()):
+                        raise ValueError('Your piece cannot be the same as the blank character.')
+                        continue
+
+                    elif (len(playpiece2) != 1):
+                        raise ValueError(
+                            '{} is not a single character. Your piece can only be a single character.'.format(
+                                playpiece2))
+                        continue
+
+                    elif (playpiece2 == playpiece1):
+                        raise ValueError(
+                            'You cannot use {} for your piece as {} is already using it.'.format(playpiece2,
+                                                                                                 player1.get_name()))
+                        continue
                 elif ((playname2.strip() == "") | (playname2 == ' ')):
                     raise ValueError('Your name cannot be the empty string or whitespace.')
+                    continue
                 elif (playname2.lower() == playname1.lower()):
                     raise ValueError(
                         'You cannot use {} for your name as someone else is already using it.'.format(playname2))
-                playpiece2 = input('Player 2 enter your piece: ')
-                if ((playpiece2.strip() != "") & (playpiece2 != ' ') & (playpiece2 != self.board.get_blank()) & (
-                        len(playpiece2) == 1) & (playpiece2 != playpiece1)):
-                    break
-                elif ((playpiece2.strip() == "") | (playpiece2 == ' ')):
-                    raise ValueError('Your piece cannot be the empty string or whitespace.')
-
-                elif (playpiece2 == self.board.get_blank()):
-                    raise ValueError('Your piece cannot be the same as the blank character.')
-
-                elif (len(playpiece2) != 1):
-                    raise ValueError(
-                        '{} is not a single character. Your piece can only be a single character.'.format(playpiece2))
-
-                elif (playpiece2 == playpiece1):
-                    raise ValueError('You cannot use {} for your piece as {} is already using it.'.format(playpiece2,
-                                                                                                          player1.get_name()))
+                    continue
             except ValueError as r:
                 print(r)
         player2 = Player(playname2, playpiece2)
