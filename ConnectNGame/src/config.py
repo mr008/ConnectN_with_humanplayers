@@ -1,6 +1,6 @@
 import ConnectNGame
 from ConnectNGame.src.game import Game
-
+import sys
 
 class Config(object):
 
