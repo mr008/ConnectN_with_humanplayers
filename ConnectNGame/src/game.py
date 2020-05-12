@@ -24,9 +24,8 @@ class Game(object):
 
     def setup_players(self) -> None:
         while True:
-            playname = input('Player 1 enter your name: ')
-            playname1 = playname.strip()
-            if (playname1 == "") | (playname1 == ' '):
+            playname1 = input('Player 1 enter your name: ')
+            if (playname1.strip() == "") | (playname1 == ' '):
                 print('Your name cannot be the empty string or whitespace.')
                 continue
             break
